@@ -1,4 +1,4 @@
-javascriptexport const metadata = {
+export const metadata = {
   title: 'CCAH Vet Clinic',
   description: 'Veterinary Management System',
 }
