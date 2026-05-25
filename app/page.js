@@ -1,4 +1,4 @@
-javascriptexport default function Home() {
+export default function Home() {
   return (
     <main>
       <h1>CCAH Veterinary Clinic</h1>
