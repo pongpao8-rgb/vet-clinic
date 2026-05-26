@@ -27,7 +27,7 @@ export default function Dashboard() {
       </div>
 
       <div style={{padding: '30px'}}>
-        <h2 style={{color: '#2d6a4f'}}>Main Menu</h2>
+        <h2 style={{color: '#2d6a4f'}}>Main Menu - CCAH</h2>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
