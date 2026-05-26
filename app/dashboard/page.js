@@ -6,12 +6,3 @@ export default function Dashboard() {
     </div>
   )
 }
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
