@@ -3,7 +3,7 @@ eimport Link from 'next/link'
 export default function Home() {
   return (
     <main style={{padding: '40px', textAlign: 'center'}}>
-      <h1>🐾 CCAH Veterinary Clinic</h1>
+      <h1>🐾 CCAH Veterinary Clinic System</h1>
       <p>Welcome to the Clinic Management System</p>
       <div style={{marginTop: '20px'}}>
         <Link href="/login" style={{
