@@ -4,20 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
-    "start": "next start -p $PORT",
-    "postinstall": "prisma generate"
+    "build": "next build",
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "next": "14.2.35",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "prisma": "^5.0.0",
-    "@prisma/client": "^5.0.0",
-    "next-auth": "^4.24.0",
-    "bcryptjs": "^2.4.3"
-  },
-  "devDependencies": {
-    "@types/bcryptjs": "^2.4.6"
+    "react-dom": "18.3.1"
   }
 }
