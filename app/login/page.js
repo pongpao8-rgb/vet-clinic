@@ -1,4 +1,31 @@
+'use client'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+
 export default function LoginPage() {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+
+  const handleLogin = async () => {
+    setLoading(true)
+    setError('')
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    })
+    const data = await res.json()
+    if (data.success) {
+      router.push('/dashboard')
+    } else {
+      setError('Invalid username or password')
+      setLoading(false)
+    }
+  }
+
   return (
     <div style={{
       display: 'flex',
@@ -20,45 +47,59 @@ export default function LoginPage() {
         <p style={{textAlign: 'center', color: '#666'}}>
           Staff Login
         </p>
+        {error && (
+          <p style={{color: 'red', textAlign: 'center'}}>{error}</p>
+        )}
         <div style={{marginTop: '20px'}}>
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
             style={{
               width: '100%',
               padding: '10px',
               marginBottom: '10px',
               borderRadius: '5px',
               border: '1px solid #ddd',
-              fontSize: '16px'
+              fontSize: '16px',
+              boxSizing: 'border-box'
             }}
           />
-          <input 
-            type="password" 
+          <input
+            type="password"
             placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
             style={{
               width: '100%',
               padding: '10px',
               marginBottom: '20px',
               borderRadius: '5px',
               border: '1px solid #ddd',
-              fontSize: '16px'
+              fontSize: '16px',
+              boxSizing: 'border-box'
             }}
           />
-          <button style={{
-            width: '100%',
-            padding: '12px',
-            backgroundColor: '#2d6a4f',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            fontSize: '16px',
-            cursor: 'pointer'
-          }}>
-            Login
+          <button
+            onClick={handleLogin}
+            disabled={loading}
+            style={{
+              width: '100%',
+              padding: '12px',
+              backgroundColor: loading ? '#95d5b2' : '#2d6a4f',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              fontSize: '16px',
+              cursor: loading ? 'not-allowed' : 'pointer'
+            }}
+          >
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </div>
       </div>
     </div>
   )
+}
 }
